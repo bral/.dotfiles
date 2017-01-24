@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: debug
+# key: d
+# --
+debug('${1:$()}', ${1:$$()})

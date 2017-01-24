@@ -1,0 +1,158 @@
+" ~/.vimrc
+" vim:set ft=vim et
+
+" Section: Initialize {{{1
+"-------------------------
+
+" Vundle
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Tools
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'mattn/emmet-vim'
+Plugin 'godlygeek/tabular'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'mileszs/ack.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'mattn/gist-vim'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'UltiSnips'
+Plugin 'Auto-Pairs'
+Plugin 'matze/vim-move'
+" UI
+Plugin 'Solarized'
+Plugin 'telamon/vim-color-github'
+Plugin 'Rykka/colorv.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+" Langs
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-markdown'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'wavded/vim-stylus'
+Plugin 'lambdatoast/elm.vim'
+
+call vundle#end()
+filetype plugin indent on
+
+syntax on
+
+set autowrite
+set autoread
+set autoindent
+set backup
+set backupdir=~/.vim/temp
+set nowritebackup
+set noswapfile
+set clipboard=unnamed
+set expandtab
+set incsearch
+set ignorecase
+if has("balloon_eval") && has("unix")
+  set ballooneval
+endif
+set hlsearch
+set laststatus=2 " Always show status line
+set lazyredraw
+set mousemodel=popup
+set number
+set pastetoggle=<F2>
+set shiftwidth=2
+set softtabstop=2
+set showcmd         " Show (partial) command in status line.
+set showmatch       " Show matching brackets.
+set smartcase       " Case insensitive searches become sensitive with capitals
+set smarttab        " sw at the start of the line, sts everywhere else
+if exists("+spelllang")
+  set spelllang=en_us
+endif
+if v:version >= 700
+  set viminfo=!,'20,<50,s10,h
+endif
+set undodir=~/.vim/undo
+set undofile
+set undolevels=1000  "maximum number of changes that can be undone
+set undoreload=10000 "maximum number of lines to save for undo on a buffer reload
+set term=xterm-256color
+set t_Co=256
+set timeoutlen=1200 " A little bit more time for macros
+set ttimeoutlen=50  " Make Esc work faster
+set viewoptions=folds
+set wildmenu
+set wildmode=longest:full,full
+if v:version >= 600
+  set autoread
+  set foldmethod=marker
+  set printoptions=paper:letter
+  set sidescrolloff=5
+  set mouse=a
+endif
+
+function! Fancy()
+  if &number
+    if has("gui_running")
+      let &columns=&columns-12
+    endif
+    windo set nonumber foldcolumn=0
+    if exists("+cursorcolumn")
+      set nocursorcolumn nocursorline
+    endif
+  else
+    if has("gui_running")
+      let &columns=&columns+12
+    endif
+    windo set number foldcolumn=4
+    if exists("+cursorcolumn")
+      set cursorline
+    endif
+  endif
+endfunction
+command! -bar Fancy :call Fancy()
+
+let mapleader=" "
+
+nnoremap ; :
+vnoremap > >gv
+vnoremap < <gv
+nnoremap Q @q
+inoremap kj <Esc>
+vnoremap KJ <Esc>
+inoremap <C-H> <left>
+inoremap <C-L> <right>
+vmap <C-j> <Plug>MoveBlockDown
+vmap <C-k> <Plug>MoveBlockUp
+nmap <A-k> <Plug>MoveLineDown
+nmap <A-j> <Plug>MoveLineDown
+nnoremap <leader>ev :vsplit ~/.vimrc.after<cr>
+nnoremap <leader>sv :source ~/.vimrc<cr>
+nnoremap <leader>hh <esc>:help <c-r><c-w><cr>
+nnoremap <leader>h? <esc>:set <c-r><c-w>?<cr>
+nnoremap <silent> <leader>m :let g:NERDTreeWinPos = "left"<cr>:NERDTreeToggle<cr>
+nnoremap <silent> <leader>. :let g:NERDTreeWinPos = "right"<cr>:NERDTreeToggle<cr>
+nmap <Leader>a :Tabularize /
+vmap <Leader>a :Tabularize /
+nnoremap <leader>rt :Tagbar<cr>
+
+if (&t_Co > 2 || has("gui_running")) && has("syntax")
+  set background=dark
+  let g:solarized_termcolors=16
+  colorscheme solarized
+endif
+
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif

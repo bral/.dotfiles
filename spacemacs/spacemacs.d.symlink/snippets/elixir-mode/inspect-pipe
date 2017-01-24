@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: inspect-pipe
+# key: pi
+# --
+|> (&(IO.inspect(&1) && &1)).()

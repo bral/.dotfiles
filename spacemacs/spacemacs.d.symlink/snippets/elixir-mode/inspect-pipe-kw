@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: inspect-pipe-kw
+# key: pI
+# --
+|> (&(IO.inspect(${1:VALUE$(upcase yas-text)}: &1) && &1)).()

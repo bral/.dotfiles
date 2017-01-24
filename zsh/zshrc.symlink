@@ -1,0 +1,68 @@
+# -*- mode: shell-script; -*-
+
+# shortcut to this dotfiles path is $ZSH
+export ZSH=$HOME/.dotfiles
+export PROJECTS=$HOME/Projects
+export ELM_HOME=/usr/local/lib/node_modules/elm
+
+# all of our zsh files
+typeset -U config_files
+config_files=($ZSH/*/*.zsh)
+
+# load the path files
+for file in ${(M)config_files:#*/path.zsh}
+do
+  source $file
+done
+
+# load everything but the path and completion files
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+do
+  source $file
+done
+
+# initialize autocomplete here, otherwise functions won't be loaded
+autoload -U compinit
+compinit
+
+autoload -U zmv
+
+# load every completion after autocomplete loads
+for file in ${(M)config_files:#*/completion.zsh}
+do
+  source $file
+done
+
+unset config_files
+
+pathdirs=(
+  $HOME/bin
+  /bin
+  /sbin
+  /opt/bin
+  /opt/ruby/bin
+  /usr/local/heroku/bin
+  /usr/local/lib/python2.7/site-packages
+  /usr/local/opt/autoconf/bin
+  /usr/local/opt/coreutils/libexec/gnubin
+  /usr/local/bin
+  /usr/local/sbin
+  /usr/bin
+  /usr/sbin
+)
+
+for dir in $pathdirs; do
+  test -d $dir && path+=$dir
+done
+
+# source optional profiles
+test -f ~/.zshprofile && source ~/.zshprofile
+test -f ~/.profile && source ~/.profile
+
+# use gnu manpages
+export HELPDIR=/usr/local/share/zsh/help
+
+# this lets `read` and `vared` backspace properly
+if [[ $(ps -o comm= $PPID) = iterm ]]; then
+  stty erase '^?'
+fi

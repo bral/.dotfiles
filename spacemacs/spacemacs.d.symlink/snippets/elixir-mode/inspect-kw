@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: inspect-kw
+# key: I
+# --
+IO.inspect([{:"${2:PREFIX$(upcase yas-text)}_${1:$(upcase yas-text)}", ${1:value}}])$0

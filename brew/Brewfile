@@ -1,0 +1,52 @@
+update
+upgrade
+
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+
+install findutils
+
+install bash
+
+tap homebrew/dupes
+install homebrew/dupes/grep
+
+tap d12frosted/emacs-plus
+install emacs-plus
+
+install ack
+install autojump
+install coreutils
+install erlang
+install git
+install heroku-toolbelt
+install hub
+install jq
+install mas 
+install python
+install reattach-to-user-namespace
+install redis
+install riak
+install tmux
+install tree
+install vim
+install wget
+install zsh
+
+# Install homebrew-cask
+
+tap phinze/homebrew-cask
+install brew-cask
+
+# Install osx apps
+
+cask --appdir="/Applications" \
+  alfred \
+  dropbox \
+  google-drive \
+  iterm2 \
+  slate \
+  sublime-text
+
+# Remove outdated versions from the cellar
+
+cleanup

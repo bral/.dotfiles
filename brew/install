@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Check for Homebrew
+
+if [[ ! -z /usr/local/bin/brew ]]; then
+  echo "installing homebrew..."
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+brew bundle $DOTFILES/brew/Brewfile
+

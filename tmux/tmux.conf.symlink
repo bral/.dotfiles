@@ -1,0 +1,98 @@
+# status bar
+set-option -g status-utf8 on
+
+set-option -g default-shell /bin/zsh
+
+set-window-option -g automatic-rename on
+
+set -g status-interval 1
+set -g status-justify centre # center align eindow list
+set -g status-left-length 20
+set -g status-right-length 100
+set -g status-right ''
+set -g status-left '  #[fg=green]#S'
+
+# default statusbar colors
+set -g status-fg white
+set -g status-bg default
+
+# default window title colors
+set-window-option -g window-status-fg white
+set-window-option -g window-status-bg default
+set-window-option -g window-status-attr dim
+
+# active window title colors
+set-window-option -g window-status-current-fg white
+set-window-option -g window-status-current-bg blue
+
+set -g default-terminal "screen-256color"
+
+# C-b is not acceptable -- Vim uses it
+set-option -g prefix C-q
+bind-key C-q last-window
+
+# Start numbering at 1
+set -g base-index 1
+
+# Allows for faster key repetition
+set -s escape-time 0
+
+# Rather than constraining window size to the maximum size of any client
+# connected to the *session*, constrain window size to the maximum size of any
+# client connected to *that window*. Much more reasonable.
+setw -g aggressive-resize on
+
+# Pane resize in all four directions using vi bindings.
+bind J resize-pane -D
+bind K resize-pane -U
+bind H resize-pane -L
+bind L resize-pane -R
+
+# Allows us to use C-a a <command> to send commands to a TMUX session inside
+# another TMUX session
+bind-key a send-prefix
+
+# Activity monitoring
+setw -g monitor-activity on
+set -g visual-activity on
+
+# Vi copypaste mode
+bind ` copy-mode
+unbind p
+set-window-option -g mode-keys vi
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+
+# act like vim
+setw -g mode-keys vi
+bind-key -r C-h select-window -t :-
+bind-key -r C-l select-window -t :+
+
+# hjkl pane traversal
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# reload config
+bind R source-file ~/.tmux.conf \; display-message "Config reloaded..."
+
+set -g mouse on
+
+bind-key -r C-S-Left swap-window -t -1
+bind-key -r C-S-Right swap-window -t +1
+
+set -g default-terminal "screen-256color-bce"
+
+set-option -g history-limit 50000
+
+set-option -g default-command "reattach-to-user-namespace -l zsh"
+
+bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+
+# Update default binding of `Enter` to also use copy-pipe
+unbind -t vi-copy Enter
+bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+
+# Bind ']' to use pbpaste
+bind ] run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
