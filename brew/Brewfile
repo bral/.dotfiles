@@ -21,7 +21,7 @@ install git
 install heroku-toolbelt
 install hub
 install jq
-install mas 
+install mas
 install python
 install reattach-to-user-namespace
 install redis
@@ -37,7 +37,7 @@ install zsh
 tap phinze/homebrew-cask
 install brew-cask
 
-# Install osx apps
+# Install non appstore osx apps
 
 cask --appdir="/Applications" \
   alfred \
@@ -45,7 +45,19 @@ cask --appdir="/Applications" \
   google-drive \
   iterm2 \
   slate \
+  spotify \
   sublime-text
+
+# Install app store osx apps
+
+mas 'LastPass', id: 926036361
+mas 'Kindle', id: 405399194
+mas 'Ulysses', id: 623795237
+mas 'Chrono Plus', id: 946047238
+mas 'Airmail 3', id: 918858936
+mas 'Sketch', id: 425955336
+mas 'Slack', id: 803453959
+mas 'Dash', id: 458034879
 
 # Remove outdated versions from the cellar
 
