@@ -17,60 +17,75 @@ tap 'phinze/cask'
 
 brew 'ack'
 brew 'autoconf'
-brew 'openssl'
 brew 'axel'
-brew 'readline'
 brew 'bash'
 brew 'bazaar'
 brew 'bison'
-brew 'libpng'
-brew 'freetype'
-brew 'fontconfig'
-brew 'libffi'
-brew 'pcre'
-brew 'glib'
-brew 'pixman'
 brew 'clisp'
 brew 'cmake'
 brew 'coreutils'
-brew 'jpeg'
-brew 'libtiff'
-brew 'erlang'
-brew 'nspr'
-brew 'spidermonkey'
+brew 'd12frosted/emacs-plus/emacs-plus'
 brew 'editorconfig'
 brew 'elixir'
-brew 'git'
+brew 'erlang'
 brew 'findutils'
-brew 'nettle'
-brew 'p11-kit'
+brew 'fontconfig'
+brew 'freetype'
+brew 'git'
+brew 'glib'
 brew 'gnutls'
 brew 'go'
-brew 'libtool'
+brew 'homebrew/boneyard/ngrok'
+brew 'homebrew/dupes/grep'
+brew 'homebrew/fuse/sshfs'
 brew 'hub'
 brew 'imagemagick'
+brew 'jpeg'
 brew 'jq'
+brew 'libffi'
+brew 'libpng'
+brew 'libtiff'
+brew 'libtool'
 brew 'mackup'
 brew 'makedepend'
 brew 'mas'
 brew 'memcached', restart_service: true
-brew 'sqlite'
-brew 'python'
 brew 'mongodb'
+brew 'nettle'
 brew 'node'
+brew 'nspr'
+brew 'openssl'
+brew 'p11-kit'
+brew 'pcre'
+brew 'pixman'
 brew 'postgresql'
+brew 'python'
 brew 'qt5'
 brew 'rabbitmq'
+brew 'readline'
 brew 'redis', restart_service: true
 brew 'rename'
+brew 'spidermonkey'
+brew 'sqlite'
 brew 'the_platinum_searcher'
 brew 'tmux'
 brew 'tree'
 brew 'zsh'
-brew 'd12frosted/emacs-plus/emacs-plus'
-brew 'homebrew/boneyard/ngrok'
-brew 'homebrew/dupes/grep'
-brew 'homebrew/fuse/sshfs'
+
+# Casks
+
+cask "alfred"
+cask "appcleaner"
+cask "dropbox"
+cask "flux"
+cask "google-chrome"
+cask "google-drive"
+cask "iterm2"
+cask "sketch"
+cask "slate"
+cask "spotify"
+cask "sublime-text"
+cask "virtualbox"
 cask 'adium'
 cask 'arq'
 cask 'dropbox'
@@ -82,29 +97,16 @@ cask 'transmission'
 cask 'transmit'
 cask 'vagrant'
 cask 'virtualbox'
+cask 'vyprvpn'
 
-# Install non appstore osx apps
-cask "alfred"
-cask "appcleaner"
-cask "dropbox"
-cask "flux"
-cask "google-drive"
-cask "google-chrome"
-cask "iterm2"
-cask "sketch"
-cask "slate"
-cask "spotify"
-cask "sublime-text"
-cask "virtualbox"
+# Mas
 
-# Install app store osx apps
-
-mas 'LastPass', id: 926036361
-mas 'Kindle', id: 405399194
-mas 'Ulysses', id: 623795237
-mas 'Chrono Plus', id: 946047238
 mas 'Airmail 3', id: 918858936
-mas 'Sketch', id: 425955336
-mas 'Slack', id: 803453959
+mas 'Chrono Plus', id: 946047238
 mas 'Dash', id: 458034879
 mas 'Double Shot', id: 1076145960
+mas 'Kindle', id: 405399194
+mas 'LastPass', id: 926036361
+mas 'Sketch', id: 425955336
+mas 'Slack', id: 803453959
+mas 'Ulysses', id: 623795237
