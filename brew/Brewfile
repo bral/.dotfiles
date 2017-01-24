@@ -1,52 +1,101 @@
-update
-upgrade
+cask_args appdir: '/Applications'
 
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+# Taps
 
-install findutils
+tap 'caskroom/cask'
+tap 'd12frosted/emacs-plus'
+tap 'gapple/services'
+tap 'homebrew/binary'
+tap 'homebrew/boneyard'
+tap 'homebrew/bundle'
+tap 'homebrew/core'
+tap 'homebrew/dupes'
+tap 'homebrew/fuse'
+tap 'phinze/cask'
 
-install bash
+# Brews
 
-tap homebrew/dupes
-install homebrew/dupes/grep
-
-tap d12frosted/emacs-plus
-install emacs-plus
-
-install ack
-install autojump
-install coreutils
-install erlang
-install git
-install heroku-toolbelt
-install hub
-install jq
-install mas
-install python
-install reattach-to-user-namespace
-install redis
-install riak
-install tmux
-install tree
-install vim
-install wget
-install zsh
-
-# Install homebrew-cask
-
-tap phinze/homebrew-cask
-install brew-cask
+brew 'ack'
+brew 'autoconf'
+brew 'openssl'
+brew 'axel'
+brew 'readline'
+brew 'bash'
+brew 'bazaar'
+brew 'bison'
+brew 'libpng'
+brew 'freetype'
+brew 'fontconfig'
+brew 'libffi'
+brew 'pcre'
+brew 'glib'
+brew 'pixman'
+brew 'clisp'
+brew 'cmake'
+brew 'coreutils'
+brew 'jpeg'
+brew 'libtiff'
+brew 'erlang'
+brew 'nspr'
+brew 'spidermonkey'
+brew 'editorconfig'
+brew 'elixir'
+brew 'git'
+brew 'findutils'
+brew 'nettle'
+brew 'p11-kit'
+brew 'gnutls'
+brew 'go'
+brew 'libtool'
+brew 'hub'
+brew 'imagemagick'
+brew 'jq'
+brew 'mackup'
+brew 'makedepend'
+brew 'mas'
+brew 'memcached', restart_service: true
+brew 'sqlite'
+brew 'python'
+brew 'mongodb'
+brew 'node'
+brew 'postgresql'
+brew 'qt5'
+brew 'rabbitmq'
+brew 'redis', restart_service: true
+brew 'rename'
+brew 'the_platinum_searcher'
+brew 'tmux'
+brew 'tree'
+brew 'zsh'
+brew 'd12frosted/emacs-plus/emacs-plus'
+brew 'homebrew/boneyard/ngrok'
+brew 'homebrew/dupes/grep'
+brew 'homebrew/fuse/sshfs'
+cask 'adium'
+cask 'arq'
+cask 'dropbox'
+cask 'firefox'
+cask 'iterm2'
+cask 'mattr-slate'
+cask 'sublime-text'
+cask 'transmission'
+cask 'transmit'
+cask 'vagrant'
+cask 'virtualbox'
 
 # Install non appstore osx apps
-
-cask --appdir="/Applications" \
-  alfred \
-  dropbox \
-  google-drive \
-  iterm2 \
-  slate \
-  spotify \
-  sublime-text
+cask "alfred"
+cask "appcleaner"
+cask "dropbox"
+cask "flux"
+cask "google-drive"
+cask "google-chrome"
+cask "iterm2"
+cask "sketch"
+cask "slate"
+cask "spotify"
+cask "sublime-text"
+cask "virtualbox"
 
 # Install app store osx apps
 
@@ -58,7 +107,4 @@ mas 'Airmail 3', id: 918858936
 mas 'Sketch', id: 425955336
 mas 'Slack', id: 803453959
 mas 'Dash', id: 458034879
-
-# Remove outdated versions from the cellar
-
-cleanup
+mas 'Double Shot', id: 1076145960
